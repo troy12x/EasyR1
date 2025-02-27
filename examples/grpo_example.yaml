@@ -3,7 +3,7 @@ data:
   val_files: hiyouga/math12k@test
   prompt_key: problem
   max_prompt_length: 1024
-  max_response_length: 1024
+  max_response_length: 8129
   rollout_batch_size: 512
   shuffle: true
   seed: 1
