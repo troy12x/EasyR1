@@ -24,7 +24,7 @@ worker:
     kl_loss_coef: 1.0e-3
     kl_loss_type: low_var_kl
     model:
-      model_path: Qwen/Qwen2.5-7B-Instruct
+      model_path: silx-ai/Quasar-2.5-7B-Ultra
       enable_gradient_checkpointing: true
     optim:
       lr: 1.0e-6
