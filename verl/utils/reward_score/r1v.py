@@ -4,7 +4,7 @@ from mathruler.grader import grade_answer
 
 
 def r1v_format_reward(predict_str: str) -> float:
-    pattern = r"<think>.*?</think>\s*<answer>.*?</answer>"
+    pattern = r"<\|begin_of_thought\|>.*?<\|end_of_thought\|><\|begin_of_solution\|>.*?<\|end_of_solution\|>$"
     match = re.fullmatch(pattern, predict_str, re.DOTALL)
     return 1.0 if match else 0.0
 
@@ -12,7 +12,7 @@ def r1v_format_reward(predict_str: str) -> float:
 def r1v_accuracy_reward(predict_str: str, ground_truth: str) -> float:
     try:
         ground_truth = ground_truth.strip()
-        content_match = re.search(r"<answer>(.*?)</answer>", predict_str)
+        content_match = re.search(r"<\|begin_of_solution\|>(.*?)<\|end_of_solution\|>", predict_str)
         pred_answer = content_match.group(1).strip() if content_match else predict_str.strip()
         if grade_answer(pred_answer, ground_truth):
             return 1.0
